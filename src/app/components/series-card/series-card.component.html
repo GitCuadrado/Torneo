@@ -1,0 +1,37 @@
+<mat-card *ngIf="series" class="flex h-72">
+  <mat-card-header class="mx-auto my-2">
+    <mat-card-title>
+      <div class="flex">
+        <img ngSrc='https://midfield.mlbstatic.com/v1/team/{{series[0].awayTeam_id.toString()}}/spots/48'
+           alt="{{series[0].awayName}}" height=30 width=30 class="mr-2">
+        <span class="flex-auto"></span>
+        <h3 class="text-base mx-auto" matTooltip="Test">{{series[0].awayName}} vs. {{series[0].homeName}}</h3>
+        <span class="flex-auto"></span>
+        <img ngSrc='https://midfield.mlbstatic.com/v1/team/{{series[0].homeTeam_id.toString()}}/spots/48'
+           alt="{{series[0].homeName}}" height=30 width=30 class="ml-2">
+      </div>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form>
+      <div *ngFor="let game of series" class="flex">
+        <mat-radio-group class="mx-auto text-neutral-700">
+          <mat-radio-button value="away" labelPosition="before"></mat-radio-button>
+          <span class="flex-auto"></span>
+          <span *ngIf="!(game.startTimeUTC.toString().endsWith('33:00'));else tbd">
+          {{game.startTimeUTC.toString() | date:'MMM dd, h:mm a':'utc-8' }}
+          </span>
+          <ng-template #tbd>{{game.date | date: 'MMM dd,' }} TBD</ng-template>
+          <span class="flex-auto"></span>
+          <mat-radio-button value="home" labelPosition="after"></mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div [ngSwitch]="series.length">
+        <!-- Add extra spacing in case for series of less than 4 games, make it all line up -->
+        <div *ngSwitchCase="2" class="h-16"></div>
+        <div *ngSwitchCase="3" class="h-8"></div>
+      </div>
+      <button mat-raised-button class="float-right" color="primary">Pick</button>
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,26 @@
+<div class="mt-5 space-x-10 flex">
+  <div>
+    <p class="text-3xl font-bold break-after-avoid">Predicciones</p>
+    <p class="text-xl font-bold text-neutral-700"></p>
+  </div>
+  <span class="spacer"></span>
+
+</div>
+
+
+<div class="predicciones_container">
+  <div *ngFor="let item of data" class="predicciones_grupo">
+    <!--nombre grupo-->
+    <div class="predicciones_header">
+      <span>{{item.nombre}} </span> <div><span>+10 Pts</span></div>
+    </div>
+    <div class="predicciones_opciones_container">
+      <div *ngFor="let opc of item.opciones" [ngClass]=" selectOpts.get(item.id) == opc.id ? 'activo':'inactivo'" (click)="onClickOpcion(opc.id,item.id)" class="predicciones_opcion">
+        <!--nombre opcion a seleccionar-->
+        <span >
+          {{opc.nombre}}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

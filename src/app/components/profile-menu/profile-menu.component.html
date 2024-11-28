@@ -1,0 +1,7 @@
+<button mat-button [matMenuTriggerFor]="menu">
+  <mat-icon>person</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item *ngIf="auth.currentUser === null" (click)="router.navigate(['/login'])">Log In/Register</button>
+  <button mat-menu-item *ngIf="auth.currentUser !== null" (click)="this.auth.signOut();">Log Out</button>
+</mat-menu>

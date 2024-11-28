@@ -1,0 +1,16 @@
+<mat-toolbar class="bg-green-800 text-white" style="background-color: #018fc7 !important;">
+  <mat-toolbar-row class="max-w-5xl xl:mx-auto space-x-10">
+      <a [routerLink]="['/']">
+        <h3 class="text-2xl">Torneo Anal </h3>
+      </a>
+      <a [routerLink]="['/games']">
+        <p>Pick'em</p>
+      </a>
+      <a [routerLink]="['/leaderboard']">
+        <p>Clasificacion</p>
+      </a>
+      <span class="example-spacer"></span>
+      <pickem-profile-menu></pickem-profile-menu>
+  </mat-toolbar-row>
+</mat-toolbar>
+

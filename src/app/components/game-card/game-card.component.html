@@ -1,0 +1,32 @@
+<mat-card *ngIf="game">
+  <mat-card-header>
+    <mat-card-title class="text-base">{{game.awayName}} vs. {{game.homeName}}</mat-card-title>
+    <mat-card-subtitle>{{game.venue}} -
+      <span *ngIf="!(game.startTimeUTC.toString().endsWith('33:00'));else tbd">
+      {{game.startTimeUTC.toString() | date:'MMM dd, h:mm a':'utc-8' }}
+      </span>
+      <ng-template #tbd>{{game.date | date: 'MMM dd,' }} TBD</ng-template>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <form class="mt-2">
+      <mat-radio-group>
+        <div>
+          <img ngSrc='https://midfield.mlbstatic.com/v1/team/{{game.awayTeam_id.toString()}}/spots/48'
+               alt="{{game.awayName}}" height=30 width=30 class="float-left mr-2 mt-1">
+          <mat-radio-button value="away" labelPosition="before">
+            <p>{{game.awayName}}</p>
+          </mat-radio-button>
+        </div>
+        <div>
+          <img ngSrc='https://midfield.mlbstatic.com/v1/team/{{game.homeTeam_id.toString()}}/spots/48'
+               alt="{{game.homeName}}" height=30 width=30 class="float-left mr-2 mt-1">
+          <mat-radio-button value="home" labelPosition="before">
+            <p>{{game.homeName}}</p>
+          </mat-radio-button>
+        </div>
+      </mat-radio-group>
+      <button mat-raised-button class="float-right" color="primary">Pick</button>
+    </form>
+  </mat-card-content>
+</mat-card>

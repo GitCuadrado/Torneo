@@ -1,0 +1,10 @@
+<h3 class="text-3xl font-bold my-5">Welcome to Pick'ems!</h3>
+<div class="space-y-2">
+  <i>This is not a betting website!</i>
+  <div *ngIf="auth.currentUser == null">
+    You're not currently logged in! <a routerLink="/login">Log in here.</a>
+  </div>
+  <div *ngIf="auth.currentUser !== null">
+    Welcome {{auth.currentUser.displayName}}!
+  </div>
+</div>
