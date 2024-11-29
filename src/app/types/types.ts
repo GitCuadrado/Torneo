@@ -12,12 +12,15 @@ export interface Game {
 export interface Grupo{
   nombre:string,
   id:string,
+  puntos:string,
+  grupoCerrado:boolean,
+  opcionCorrecta:string;
   opciones:Opcion[]
 }
 export interface Opcion{
   id:string,
   nombre:string
-  estado:string
+  opcionSeleccionada:boolean
 }
 export interface Usuario{
   nombre:string,

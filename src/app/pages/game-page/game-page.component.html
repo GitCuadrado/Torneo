@@ -9,13 +9,78 @@
 
 
 <div class="predicciones_container">
-  <div *ngFor="let item of data" class="predicciones_grupo">
+  <div class="ranking_container ranking-right">
+    <div class="ranking_content">
+      
+      <div class="mt-5 space-x-10 flex">
+        <div>
+          <p class="text-3xl font-bold break-after-avoid">Ranking</p>
+          <p class="text-xl font-bold text-neutral-700"></p>
+        </div>
+        <span class="spacer"></span>
+
+        </div>
+        <div class="ranking_tabla">
+
+      </div>
+    </div>
+  </div>
+
+  <div class="ranking_container ranking-left">
+    <div class="ranking_content">
+      
+      <div class="mt-5 space-x-10 flex">
+        <div>
+          <p class="text-3xl font-bold break-after-avoid">Premios</p>
+          <p class="text-xl font-bold text-neutral-700"></p>
+        </div>
+        <span class="spacer"></span>
+
+        </div>
+        <div class="ranking_tabla">
+
+      </div>
+    </div>
+  </div>
+
+
+
+  <div [ngClass]="item.grupoCerrado ? 'grupoCerrado' : ''" *ngFor="let item of data" class="predicciones_grupo">
     <!--nombre grupo-->
     <div class="predicciones_header">
-      <span>{{item.nombre}} </span> <div><span>+10 Pts</span></div>
+      <div class="predicciones_header_titulo">
+        <div>
+          <span>{{item.nombre}} </span>         
+        </div>
+        <!-- <!--selectOpts.get(item.id) == item.opcionCorrecta-->
+        <div class="predicciones_opcionSelec" *ngIf="selectOpts.get(item.id) != undefined">
+          <span [ngClass]="item.grupoCerrado && selectOpts.get(item.id) == item.opcionCorrecta ? 'opcionCorrecta' : 'opcionIncorrecta'">{{opts.get(selectOpts.get(item.id) || '')}}</span> 
+          <div>  
+            <div *ngIf="item.grupoCerrado && selectOpts.get(item.id) == item.opcionCorrecta" class="circle opcionCorrecta">
+              <mat-icon>check</mat-icon>
+            </div>
+            <div *ngIf="!(item.grupoCerrado && selectOpts.get(item.id) == item.opcionCorrecta)" class="circle opcionIncorrecta">
+              <mat-icon>close</mat-icon>
+            </div>
+          </div>
+          
+          <ng-container *ngIf="item.grupoCerrado && ((selectOpts.get(item.id) == item.opcionCorrecta) == false)">
+            <div class="predicciones_opcionCorrecta">
+              <mat-icon>trending_flat</mat-icon>
+              <span >{{opts.get(item.opcionCorrecta)}}</span>  
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <div class="predicciones_header_subTitulo">
+        <span>El que mas **** ***** del grupo</span>
+      </div>
+      <div class="predicciones_puntos">
+        <span>+{{item.puntos}} Pts</span>
+      </div>
     </div>
     <div class="predicciones_opciones_container">
-      <div *ngFor="let opc of item.opciones" [ngClass]=" selectOpts.get(item.id) == opc.id ? 'activo':'inactivo'" (click)="onClickOpcion(opc.id,item.id)" class="predicciones_opcion">
+      <div *ngFor="let opc of item.opciones" [ngClass]=" selectOpts.get(item.id) == opc.id ? 'activo':'inactivo'" (click)="onClickOpcion(opc.id,item.id,item.grupoCerrado)" class="predicciones_opcion">
         <!--nombre opcion a seleccionar-->
         <span >
           {{opc.nombre}}
@@ -23,4 +88,6 @@
       </div>
     </div>
   </div>
+
 </div>
+
