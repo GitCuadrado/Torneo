@@ -25,8 +25,8 @@ import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
-    AppComponent,
-  ],
+    AppComponent
+    ],
   imports: [
     // Universal stuff
     provideFirebaseApp(() => initializeApp(environment.firebase)),

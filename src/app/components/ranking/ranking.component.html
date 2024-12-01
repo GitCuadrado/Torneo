@@ -1,0 +1,16 @@
+
+    <div class="ranking_list" *ngIf="data.length > 0" class="ranking_table">
+        <ng-container *ngFor="let item of data; let i = index">
+            <div class="ranking_list_item_left">
+                <span>Gastoncito</span>
+            </div>
+            <div class="ranking_list_item_right">
+                <span>{{item.puntos}} <ng-container *ngIf="i==0">🏆</ng-container></span>
+            </div>
+        </ng-container>
+    </div>
+    <div class="overlay_panel" *ngIf="data.length == 0">
+        <span style="font-size: 3rem;"><mat-icon style="font-size: 3rem !important; height: 50px;width: 60px;">lock</mat-icon></span>
+        <span>Este panel se habilitara cuando se cierren las predicciones</span>
+    </div>
+

@@ -13,7 +13,8 @@ import {getAuth,onAuthStateChanged } from 'firebase/auth'
 import {Auth} from "@angular/fire/auth";
 import { CommonModule } from '@angular/common';
 import {MatIconModule} from "@angular/material/icon";
-
+import { RankingComponent } from 'src/app/components/ranking/ranking.component';
+import { PremiosComponent } from 'src/app/components/premios/premios.component';
 //import { Auth, authInstance$ } from '@angular/fire/auth';
 @Component({
   selector: 'pickem-game-page',
@@ -29,7 +30,9 @@ import {MatIconModule} from "@angular/material/icon";
     SeriesCardComponent,
     KeyValuePipe,
     CommonModule,
-    MatIconModule
+    MatIconModule,
+    RankingComponent,
+    PremiosComponent
   ],
   styleUrls: ['./game-page.component.scss']
 })
@@ -45,9 +48,7 @@ export class GamePageComponent implements OnDestroy{
   protected auth: Auth = inject(Auth);
   public onViewChange(val: boolean) {
     //save options
-    
   }
-  
   ngOnInit() {
     //this.viewByDay = true; // May want user preferences later and save it
     //this.refreshGamesByDate()
@@ -96,9 +97,12 @@ export class GamePageComponent implements OnDestroy{
   }
   onClickOpcion(idOpcion:string,idGrupo:string,grupoCerrado:boolean){
     if(grupoCerrado){
+      console.log(grupoCerrado)
+      this.selectOpts.set(idGrupo,idOpcion);
+      this.selectOpts = new Map(this.selectOpts);
+      //triggereo el re render
+
       this.backendService.ActualizarPrediccion(this.auth.currentUser?.uid || '',idGrupo,idOpcion).subscribe(x => {
-        this.selectOpts.set(idGrupo,idOpcion);
-        this.selectOpts = new Map(this.selectOpts);//triggereo el re render
       })
     }
 

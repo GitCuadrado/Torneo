@@ -12,8 +12,8 @@
 .predicciones_header{
   padding: .5rem 2rem .5rem 2rem;
   background-color: #2F2F2F;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
   display: grid;
   grid-auto-flow: column;
   justify-content: space-between;
@@ -39,7 +39,7 @@
  // row-gap: 1rem;
   border: 1px solid #424242;
   //margin: 1rem 0 3rem 0;
-  border-radius: 10px;
+  border-radius: 15px;
   font-weight: 400;
   //box-shadow: inset 0 0 0.5px 1px hsla(0, 0%,  
   //            100%, 0.075),
@@ -61,24 +61,25 @@
   grid-row-gap: 1rem;
 }
 .predicciones_opcion{
-  background-color: #2F2F2F;
+  //background-color: #2F2F2F;
   border-radius: 5px;
   padding: .5rem 0;
   text-align: center;
-  border:1px solid transparent
+  border: 1px solid #424242;
 }
 .predicciones_opcion span{
   font-size: 1rem;
 
 }
 .predicciones_opcion:hover{
-  background-color: #424242;
+  background-color: #2f2f2f;
   cursor: pointer;
 }
 .predicciones_header_titulo{
   display: grid;
   grid-template-rows: auto auto;
-  grid-gap:1rem
+  grid-gap:1rem;
+  justify-content: left;
 }
 
 .predicciones_header .predicciones_header_subTitulo{
@@ -115,27 +116,28 @@
   //pointer-events: none;
 }
 .opcionCorrecta{
-  color:green !important;
-  border-color: green !important;
+  color:#22c55e !important;
+  border-color: #22c55e !important;
 }
 .opcionIncorrecta{
-  color:red !important;
-  border-color: red !important;
+  color:#ef4444 !important;
+  border-color: #ef4444 !important;
 }
 
 .ranking_container{
     height: 100%;
     width: 350px;
     top:0;
+
     position: absolute;
 
 }
 .ranking-left{
-  transform: translateX(-112%);
+  transform: translateX(-118%);
   left:0;
 }
 .ranking-right{
-  transform: translateX(112%);
+  transform: translateX(118%);
   right: 0;
 
 }
@@ -146,8 +148,24 @@
 
 }
 .ranking_tabla{
-  height: 350px;
+  //height: 350px;
+  min-height: 350px;
   width: 100%;
+  padding: 1rem 2rem;
   background: #2F2F2F;
-  border-radius: 10px;
+  border-radius: 15px;
+  position: relative;
+}
+.overlay_panel{
+  position: absolute;
+  top:0;
+  left:0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  padding: 1rem 2rem;
+  text-align: center;
 }

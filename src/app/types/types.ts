@@ -26,3 +26,13 @@ export interface Usuario{
   nombre:string,
   puntos:string
 }
+export interface Ranking{
+  nombre:string,
+  puntos:string,
+  aciertos:string,
+  gruposAcertados:Grupo[]
+}
+export interface Premio{
+  nombre:string,
+  gruposGanados:Grupo[]
+}

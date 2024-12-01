@@ -1,0 +1,16 @@
+<div *ngIf="data.length > 0" class="premios_content">
+    <ng-container *ngFor="let item of data">
+        <span class="premios_titulo">{{item.nombre}}</span>
+        <div class="premios_opciones_container" >
+            <span *ngFor="let opc of item.gruposGanados" class="premios_opcion">{{opc.nombre}}</span>
+        </div>
+        <div *ngIf="item.gruposGanados.length == 0">
+            asd
+        </div>
+    </ng-container>
+
+</div>
+<div class="overlay_panel" *ngIf="data.length == 0">
+    <span style="font-size: 3rem;"><mat-icon style="font-size: 3rem !important; height: 50px;width: 60px;">lock</mat-icon></span>
+    <span>Este panel se habilitara cuando se cierren las predicciones</span>
+</div>

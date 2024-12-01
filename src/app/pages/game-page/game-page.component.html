@@ -1,3 +1,14 @@
+<div  style="min-height: 100%;position: relative;">
+  <div *ngIf="data.length == 0" class="overlay_panel">
+    
+    <span style="font-size: 3rem;"><mat-icon style="font-size: 3rem !important; height: 50px;width: 60px;">refresh</mat-icon></span>
+    <embed src="/src/assets/copa.svg"/>
+    <img src="/src/assets/copa.svg"/>
+  
+  
+  
+  </div>
+<div *ngIf="data.length > 0" style="height: 100%;width: 100%;">
 <div class="mt-5 space-x-10 flex">
   <div>
     <p class="text-3xl font-bold break-after-avoid">Predicciones</p>
@@ -9,7 +20,7 @@
 
 
 <div class="predicciones_container">
-  <div class="ranking_container ranking-right">
+  <div class="ranking_container ranking-right" style="width:230px !important">
     <div class="ranking_content">
       
       <div class="mt-5 space-x-10 flex">
@@ -21,7 +32,8 @@
 
         </div>
         <div class="ranking_tabla">
-
+        <pickem-ranking></pickem-ranking>
+        
       </div>
     </div>
   </div>
@@ -38,8 +50,8 @@
 
         </div>
         <div class="ranking_tabla">
-
-      </div>
+        <pickem-premios></pickem-premios>
+        </div>
     </div>
   </div>
 
@@ -54,12 +66,12 @@
         </div>
         <!-- <!--selectOpts.get(item.id) == item.opcionCorrecta-->
         <div class="predicciones_opcionSelec" *ngIf="selectOpts.get(item.id) != undefined">
-          <span [ngClass]="item.grupoCerrado && selectOpts.get(item.id) == item.opcionCorrecta ? 'opcionCorrecta' : 'opcionIncorrecta'">{{opts.get(selectOpts.get(item.id) || '')}}</span> 
+          <span [ngClass]="item.grupoCerrado ? selectOpts.get(item.id) == item.opcionCorrecta ? 'opcionCorrecta' : 'opcionIncorrecta' : ''">{{opts.get(selectOpts.get(item.id) || '')}}</span> 
           <div>  
-            <div *ngIf="item.grupoCerrado && selectOpts.get(item.id) == item.opcionCorrecta" class="circle opcionCorrecta">
+            <div *ngIf="item.grupoCerrado && (selectOpts.get(item.id) == item.opcionCorrecta)" class="circle opcionCorrecta">
               <mat-icon>check</mat-icon>
             </div>
-            <div *ngIf="!(item.grupoCerrado && selectOpts.get(item.id) == item.opcionCorrecta)" class="circle opcionIncorrecta">
+            <div *ngIf="item.grupoCerrado && !(selectOpts.get(item.id) == item.opcionCorrecta)" class="circle opcionIncorrecta">
               <mat-icon>close</mat-icon>
             </div>
           </div>
@@ -76,7 +88,7 @@
         <span>El que mas **** ***** del grupo</span>
       </div>
       <div class="predicciones_puntos">
-        <span>+{{item.puntos}} Pts</span>
+        <span [ngClass]="item.grupoCerrado ? selectOpts.get(item.id) == item.opcionCorrecta ? 'opcionCorrecta' : 'opcionIncorrecta' : ''">+{{item.puntos}} Pts</span>
       </div>
     </div>
     <div class="predicciones_opciones_container">
@@ -91,3 +103,5 @@
 
 </div>
 
+</div>
+</div>

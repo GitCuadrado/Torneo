@@ -1,6 +1,6 @@
 import {inject, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Game, Grupo, Usuario} from "../types/types";
+import {Game, Grupo, Premio, Ranking, Usuario} from "../types/types";
 import {environment} from "../../environments/environment.development";
 import {Auth} from "@angular/fire/auth";
 
@@ -28,5 +28,13 @@ export class BackendRequestService {
   }
   ActualizarPrediccion(user:string,idGrupo:string,idOpcion:string){
     return this.http.get<Usuario>(environment.apiUrl + `/actualizarPrediccion/` + user + '/'+idGrupo + "/" + idOpcion) 
+  }
+  getRanking(){
+    return this.http.get<Ranking[]>(environment.apiUrl + `/ranking`) 
+
+  }
+  getPremios(){
+    return this.http.get<Premio[]>(environment.apiUrl + `/premios`) 
+
   }
 }

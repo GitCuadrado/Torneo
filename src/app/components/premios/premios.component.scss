@@ -1,0 +1,45 @@
+.premios_content{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    //padding: 1rem 2rem;
+    //row-gap:2rem;
+    //column-gap:1rem;
+    max-width: 300px;
+}
+.premios_titulo{
+    font-size: 1.1rem;
+    border-bottom: 3px solid #212121;
+    padding-right: .7rem;
+    padding:1rem .7rem 1rem .7rem;
+}
+.premios_opciones_container{
+    display: flex;
+    flex-flow: wrap-reverse;
+    gap: 1rem;
+    border-bottom: 3px solid #212121;
+
+    padding: 1rem 0;
+}
+.premios_opcion{
+    background-color: #212121;
+    border-radius: 5px;
+    padding: .2rem .4rem;
+    text-wrap: nowrap;
+
+}
+.noDatamsg{
+    padding: 1rem 2rem;
+}
+.overlay_panel{
+    position: absolute;
+    top:0;
+    left:0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    padding: 1rem 2rem;
+    text-align: center;
+}
